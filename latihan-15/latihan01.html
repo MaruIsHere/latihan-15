@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan JQuery</title>
+</head>
+<body>
+
+
+    <b>Nama:</b>
+    <div class="nama"></div>
+    <b>Email:</b>
+    <div class="email"></div>
+    <b>Username:</b>
+    <div class="username"></div>
+
+
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            let urlapi = "https://webpro.ptov.my.id/api/curduser.php?aksi=get";
+
+            $.ajax({
+                url: urlapi,
+                success: function(dta, status, xhr){
+                    console.log(dta);
+                    $(".nama").html(dta.isi[0][0]);
+                    $(".email").html(dta.isi[0][1]);
+                    $(".username").html(dta.isi[0][2]);
+                },
+                error: function(xhr,status,ert){
+
+                }
+            });
+        });
+    </script>
+</body>
+</html>
